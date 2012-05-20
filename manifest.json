@@ -1,8 +1,12 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.2.4.3",
+	"version": "1.2.8.2",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
+	"browser_action": {
+		"default_title": "Disable CAGE",
+		"default_icon": "img/icon19.png"
+	},
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
@@ -89,7 +93,7 @@
 			],
 		"all_frames": true
 	},
-		{
+	{
 		"matches": ["*://apps.facebook.com/castle_age/*"],
 		"js": [
 			"js/version.js",

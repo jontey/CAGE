@@ -1,33 +1,49 @@
 <script type="text/javascript" src='js/chrome.js'></script>
 <script type="text/javascript">
-	/*var enable = true;
 
-	 function updateIcon() {
-	 enable = !enable;
-	 if(enable) {
-	 chrome.browserAction.setTitle({
-	 title : 'Disable CAGE'
-	 });
-	 chrome.browserAction.setIcon({
-	 path : 'img/icon19.png'
-	 });
-	 } else {
-	 chrome.browserAction.setTitle({
-	 title : 'Enable CAGE'
-	 });
-	 chrome.browserAction.setIcon({
-	 path : 'img/icon19off.png'
-	 });
-	 }
-	 }
+		var CAGE = {};
+		if(localStorage['cageCAGE.enabled'] === undefined) {
+			localStorage['cageCAGE.enabled'] = true;
+		};
+		CAGE.enable = JSON.parse(localStorage['cageCAGE.enabled']);
 
-	 "browser_action": {
-	 "default_title": "Disable CAGE",
-	 "default_icon": "img/icon19.png"
-	 },
+		function updateIcon() {
+			CAGE.enable = !CAGE.enable;
+			if(CAGE.enable === true) {
+				localStorage['cageCAGE.enabled'] = true;
+				chrome.browserAction.setTitle({
+					title : 'Disable CAGE'
+				});
+				chrome.browserAction.setIcon({
+					path : 'img/icon19.png'
+				});
+			} else {
+				localStorage['cageCAGE.enabled'] = false;
+				chrome.browserAction.setTitle({
+					title : 'CAGE.enable CAGE'
+				});
+				chrome.browserAction.setIcon({
+					path : 'img/icon19off.png'
+				});
+			}
+		}
 
-	 chrome.browserAction.onClicked.addListener(updateIcon);
-	 */
-	com.initBackground();
+		if(CAGE.enable === true) {
+			chrome.browserAction.setTitle({
+				title : 'Disable CAGE'
+			});
+			chrome.browserAction.setIcon({
+				path : 'img/icon19.png'
+			});
+		} else {
+			chrome.browserAction.setTitle({
+				title : 'CAGE.enable CAGE'
+			});
+			chrome.browserAction.setIcon({
+				path : 'img/icon19off.png'
+			});
+		}
 
+		com.initBackground();
+		chrome.browserAction.onClicked.addListener(updateIcon);
 </script>

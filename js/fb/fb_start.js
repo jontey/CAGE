@@ -8,6 +8,11 @@ function startCAGE() {
 		_i.value = Env.user;
 		document.body.appendChild(_i);
 	}, null, true, true);
+	// Fix for double scrollbars
+	$('#body').css({
+		'overflow' : '',
+		'overflowY' : ''
+	});
 	// Iframe changes
 	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
@@ -19,7 +24,7 @@ function startCAGE() {
 
 	// renews signed_request every 10 minutes
 	window.setInterval(function() {
-		$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
+		$.get('//apps.facebook.com/castle_age/index.php', function(_data) {
 			var _sr = _data.match(/<input.+?"signed_request".+?>/)[0].replace('input', 'input id="signed_request"');
 			$('#signed_request').remove();
 			$(document.body).append($(_sr));

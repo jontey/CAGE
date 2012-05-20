@@ -37,7 +37,7 @@ tools.Assister.runtimeUpdate = function() {
 		assisterCommentMonster : item.get('assisterCommentMonster', true),
 		assisterCommentFBPost : item.get('assisterCommentFBPost', true),
 		assisterLikeFBPost : item.get('assisterLikeFBPost', true)
-	}
+	};
 	tools.Facebook.getFriendlists(function(_names) {
 		$.each(_names, function(_i, _e) {
 			tools.Assister.runtime.assisterLists[_e] = _e;
@@ -56,7 +56,7 @@ tools.Assister.start = function() {
 	} else {
 		tools.Facebook.GetListMembers(tools.Assister.runtime.assisterList, function(_ids) {
 			tools.Assister.getCTA(_ids);
-		})
+		});
 	}
 };
 
@@ -149,7 +149,7 @@ tools.Assister.assist = function(_ids) {
 						var _postid = _guarddata.find('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
 						var _fbpost = _postid.match(/\d+/g);
-						console.log('Assister - Post Link: http://www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
+						console.log('Assister - Post Link: //www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
 						if(tools.Assister.runtime.assisterLikeFBPost === true) {
 							addFunction(function(_data) {
 								FB.api("/" + _data.postid + "/likes", 'post', function(response) {
@@ -175,7 +175,7 @@ tools.Assister.assist = function(_ids) {
 					tools.Assister.assist();
 				}
 			} else {
-				console.log('Assister - No assist, maybe already assisted')
+				console.log('Assister - No assist, maybe already assisted');
 				tools.Assister.assist();
 			}
 		}, 'text');
