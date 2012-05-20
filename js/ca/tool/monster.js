@@ -202,6 +202,348 @@ tools.Monster.battleAdditons = function(_monsterpage) {
 	tools.Monster.battleResult(monsterBars, defense, stunBar);
 	tools.Monster.battleCTA(_monsterpage);
 };
+function gel(id){
+	return document.getElementById(id);
+}
+tools.Monster.attackKeys = function(){
+	//var g = gel('app_body');
+	//g=g.innerHTML;
+	//var	i=[1,5,10,20,50,100,200];
+	//mid='';
+	//twr='1';
+	//if(gel('availableAttacks') !== null) {
+		//var a;
+		//var b;
+		//var c;
+		//var d;
+		//var e;
+		//var f = parseInt(gel('availableAttacks').value, 10);
+
+		//if (g.indexOf('p_skaar_b') !== -1 || g.indexOf(mh+'skaar') !== -1 || g.indexOf(mh+'defend') !== -1 || g.indexOf(mh+'ragnarok') !== -1 || g.indexOf('p_water_e') !== -1 || g.indexOf(mh+'genesis') !== -1 || g.indexOf('p_earth_e') !== -1) {
+
+			//z=gel('monster_attack_section_1');
+			//if(page!=='guildv2_battle_monster' && page!=='battle_expansion_monster'){
+				//u=z.children[1].casuser.value;
+				//m=z.children[1].mpool.value;
+			//} else {
+				//gcid=z.children[1].guild_creator_id.value;
+				//gcat=z.children[1].guild_created_at.value;
+				//lslot=z.children[1].slot.value;
+				//mslot=z.children[1].monster_slot.value;
+			//}
+			//imgloc=4;
+			//if(z.children[1].mid !==undefined){
+				//mid=z.children[1].mid.value;
+				//if(z.children[1].tower !==undefined) twr=z.children[1].tower.value;
+				//imgloc=6;	
+			//}
+			//if(page=='guildv2_battle_monster'||page=='battle_expansion_monster'){imgloc=6};
+			//b1t=z.nextSibling.nextSibling.children[1].children[imgloc].children[0].src;
+			//b2t=z.nextSibling.children[1].children[imgloc].children[0].src;
+			//bvals=[[1,10],[5,10],[10,20],[20,40],[50,100]];
+			//z=z.parentNode;
+			//if(z.children[0].getAttribute('id')==null){
+				//y=document.createElement('div');
+				//y.setAttribute('style','float:left;padding:30px 0 0 60px;');
+				//y.innerHTML=z.children[0].innerHTML;
+				//z.parentNode.insertBefore(y,z);
+				//y=document.createElement('div');
+				//y.setAttribute('style','float:left;padding:30px 0 0 12px;');
+				//y.innerHTML=z.lastElementChild.innerHTML;
+				//z.parentNode.appendChild(y);
+				//z.setAttribute('style','height:90px; float: left;');
+			//}
+			//z.innerHTML='';
+			//for(x=1;x<6;x++){
+				//if(x===1){b1t=b1t.replace('_power','');}
+				//for(y=1;y<3;y++){
+					//switch (y) {
+						//case 1: bimg=b1t;ct='stamina';break;
+						//case 2: bimg=b2t;ct='energy';break;
+					//}
+					//d = document.createElement('div');
+					//d.setAttribute('id', 'monster_attack_section_'+((x*2)-(2-y)));
+					//d.setAttribute('class', 'action');
+					//if(x<5){
+						//d.setAttribute('style', 'padding: 19px 0pt 0pt 17px;float: left;display:none');
+					//} else {
+						//d.setAttribute('style', 'padding: 19px 0pt 0pt 17px;float: left;display:block');
+					//}
+					//c='<div><img src="./ploader.php_files/'+ilnk+'button_cost_'+ct+'_'+bvals[x-1][y-1]+'.gif"></div><a onclick="als(glob, \'';
+
+					//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+						//if(mid!==''){c+='festival_';}
+						//c+='battle_monster.php?action=attackDragonSpecific&casuser='+u+'&mpool='+m+'&attack_key='+((x*2)-(2-y));
+						//if(mid!==''){c+='&mid='+mid+'&tower='+twr;}
+					//} else {
+						//c+='battle_expansion_monster.php?action=attackDragonSpecific&guild_creator_id='+gcid+'&guild_created_at='+gcat+'&slot='+lslot+'&monster_slot='+mslot+'&attack_key='+((x*2)-(2-y));
+					//}
+					//c+='\')"><img class="imgButton" src="./ploader.php_files/'+bimg+'"></a>';
+					//d.innerHTML=c;
+					//z.appendChild(d);
+				//}
+			//}
+			//gel('availableAttacks').value = 10;
+			//gel('scrollRightArrow').setAttribute('style', 'display:none');
+			//gel('scrollLeftArrow').setAttribute('style', 'display:block');
+			//gel('currentOffset').value = 9;
+		//}
+
+		//if (g.indexOf(mh+'kromash') !== -1 ||g.indexOf(mh+'shardros') !== -1 ||g.indexOf('p_frost_') !== -1 ||g.indexOf(mh+'glacius') !== -1 ||g.indexOf(mh+'magmos') !== -1  ||g.indexOf('p_lava') !== -1 || g.indexOf('p_aurora') !== -1 || g.indexOf(mh+'aurora') !== -1 || g.indexOf(mh+'warredplains') !== -1 || g.indexOf(mh+'azriel') !== -1 || g.indexOf('s_azriel.') !== -1 || g.indexOf(mh+'alphabahamut') !== -1 || g.indexOf('p_volcanic_n') !==-1 || g.indexOf(mh+'alphameph') !== -1 || g.indexOf('p_alpha_v') !== -1 || g.indexOf('p_alpha_m') !== -1 || g.indexOf(mh+'corvintheus') !== -1 || g.indexOf(mh+'gehenna') !== -1 || g.indexOf('s_fire_b') !== -1 || g.indexOf('p_fire_e') !== -1 || g.indexOf('r_ambrosia') !== -1 || g.indexOf(mh+'bahamut') !== -1 || g.indexOf(mh+'lionrebellion') !== -1 || g.indexOf('p_chimera') !== -1 || g.indexOf(mh+'chimera') !== -1 || g.indexOf(mh+'jahanna') !== -1 || g.indexOf('r_valhalla_t') !== -1 || g.indexOf('top_air') !== -1 || g.indexOf('r_thanatos2_h') !== -1 || g.indexOf('r_kraken_h') !== -1 || g.indexOf('r_vermilion_h') !== -1 || g.indexOf('s_azeron_h') !== -1 || g.indexOf('s_fenix_h') !== -1 || g.indexOf('r_alpha_kraken_h') !== -1 || g.indexOf(mh+'kessaran') !== -1 || g.indexOf('r_malekus') !== -1|| g.indexOf(mh+'urmek') !== -1) {
+
+			//z=gel('monster_attack_section_1');
+			//imgloc=4;
+			//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+				//if(z.children[1].mid!==undefined){
+					//mid=z.children[1].mid.value;
+					//if(z.children[1].tower !==undefined) twr=z.children[1].tower.value;
+					//imgloc=6;
+				//}
+				//if(z.nextSibling.children[1].mid!==undefined){
+					//mid=z.nextSibling.children[1].mid.value;
+					//if(z.nextSibling.children[1].tower !==undefined) twr=z.nextSibling.children[1].tower.value;
+					//imgloc=6;
+				//}
+			//} else {
+				//gcid=z.children[1].guild_creator_id.value;
+				//gcat=z.children[1].guild_created_at.value;
+				//lslot=z.children[1].slot.value;
+				//mslot=z.children[1].monster_slot.value;
+				//imgloc=6;
+			//}
+
+			//if(g.indexOf(mh+'kessaran')!=-1||g.indexOf('s_fenix_h')!==-1||g.indexOf(mh+'urmek')!==-1){
+				//imgloc=5;
+				//tkey=z.children[1].target_key.value;
+			//}
+
+			//a=gel('scrollLeftArrow').getAttribute('onclick');
+			//buts=parseInt(a.substring(a.indexOf('left')+7, a.indexOf(')',a.indexOf('left')+7)));
+
+			//if(z.children[1].tagName==='IMG'){
+				//b1t=z.children[1].src;
+				//b1a=0;
+				//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+					//u=z.nextSibling.children[1].casuser.value;
+					//m=z.nextSibling.children[1].mpool.value;
+				//}
+			//} else {
+				//b1t=z.children[1].children[imgloc].children[0].src;
+				//b1a=z.children[1].action.value;
+				//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+					//u=z.children[1].casuser.value;
+					//m=z.children[1].mpool.value;
+				//}
+			//}
+
+			//if(z.nextSibling.children[1].tagName==='IMG'){
+				//b2t=z.nextSibling.children[1].src;
+				//b2a=0;
+			//} else {
+				//if(z.nextSibling.children[1].children[imgloc].children[0]){
+					//b2t=z.nextSibling.children[1].children[imgloc].children[0].src;
+				//} else {
+					//b2t=z.nextSibling.children[1].children[imgloc-1].children[0].src;
+				//}
+				//b2a=z.nextSibling.children[1].action.value;
+			//}
+
+			//if(z.nextSibling.nextSibling){
+				//if(z.nextSibling.nextSibling.children.length>1){
+					//if(z.nextSibling.nextSibling.children[1].children.length===0){
+						//b3t=z.nextSibling.nextSibling.children[1].src;
+						//b3a=0;
+					//} else {
+					//if(z.nextSibling.nextSibling.children[1].children[imgloc].children[0]){
+						//b3t=z.nextSibling.nextSibling.children[1].children[imgloc].children[0].src;
+					//} else {
+						//b3t=z.nextSibling.nextSibling.children[1].children[imgloc-1].children[0].src;
+					//}
+						//b3a=z.nextSibling.nextSibling.children[1].action.value;
+					//}
+				//}
+			//}
+
+			//if(g.indexOf(mh+'warredplains') != -1 || g.indexOf(mh+'lionrebellion') !== -1){
+				//bvals=[[5,5,10],[10,10,20],[20,20,40],[50,50,100]];
+				//btyp=0;
+			//} else {
+				//bvals=[[5,10,10],[10,20,20],[20,40,40],[50,100,100]];
+				//btyp=1;
+			//}
+			//if(g.indexOf(mh+'jahanna') !== -1 || g.indexOf('r_valhalla_t') !== -1 || g.indexOf('top_air') !== -1 || g.indexOf('r_thanatos2_h') !== -1 || g.indexOf(mh+'glacius') !== -1 || g.indexOf('s_azeron_h') !== -1||g.indexOf(mh+'magmos') !== -1 || g.indexOf('r_valhalla_t') !== -1 || g.indexOf(mh+'kessaran') !== -1|| g.indexOf('s_fenix_h') !== -1||g.indexOf(mh+'shardros') !== -1|| g.indexOf('r_malekus') !== -1|| g.indexOf(mh+'urmek') !== -1|| g.indexOf('r_vermilion_h') !== -1|| g.indexOf(mh+'chimera') !== -1){
+				//bvals=[[10,20,20],[20,40,40],[50,100,100],[100,200,200],[200,200,200]];
+				//nvals=5
+			//} else {
+				//nvals=4
+			//}
+			//z=z.parentNode;
+			//if(z.children[0].getAttribute('id')==null){
+				//y=document.createElement('div');
+				//if(buts==2){
+					//y.setAttribute('style','float:left;padding:30px 0 0 60px;');
+				//} else {
+					//y.setAttribute('style','float:left;padding:30px 0 0 1px;');
+				//}
+				//y.innerHTML=z.children[0].innerHTML;
+				//z.parentNode.insertBefore(y,z);
+				//y=document.createElement('div');
+				//y.setAttribute('style','float:left;padding:30px 0 0 12px;');
+				//y.innerHTML=z.lastElementChild.innerHTML;
+				//z.parentNode.appendChild(y);
+				//z.setAttribute('style','height:90px; float: left;');
+			//}
+			//z.innerHTML='';
+			////for(x=1;x<nvals+1;x++){ for(y="1;y<buts+1;y++){" if(y="==1){" bimg="b1t;" bac="b1a;" ct="stamina" ;="" }="" if(btyp="==0){" else="" {="" d="document.createElement('div');" d.setattribute('id',="" 'monster_attack_section_'+((x*buts)-(buts-y)));="" d.setattribute('class',="" 'action');="" if(x<nvals){="" d.setattribute('style',="" 'padding:19px="" 0pt="" 15px;float:left;display:none');="" 15px;float:left;display:block');="" c="<div><img src=&quot;" +ilnk+'button_cost_'+ct+'_'+bvals[x-1][y-1]+'.gif"="">';
+
+				//if((page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster')&&bac!==0){
+						//c+='<a onclick="als(glob, \'';
+						//if(mid!==''){c+='festival_';}
+						//c+='battle_monster.php?action='+bac+'&casuser='+u+'&mpool='+m+'&attack_key='+((x*buts)-(buts-y));
+						//if(g.indexOf(mh+'kessaran')!=-1||g.indexOf('s_fenix_h')!==-1||g.indexOf(mh+'urmek') !== -1){
+							//c+='&target_key=\'+this.children[0].value+\'';
+						//}
+						//if(mid!==''){c+='&mid='+mid+'&tower='+twr;}
+						//c+='\')">';
+						//if(g.indexOf(mh+'kessaran')!=-1||g.indexOf('s_fenix_h')!==-1||g.indexOf(mh+'urmek') !== -1){
+							//c+='<input class="selected_target_keys" type="hidden" value="'+tkey+'" name="tkey">';
+						//}
+
+					//} else {
+						//if(bac!==0){
+							//c+='</a><a onclick="als(glob, \'battle_expansion_monster.php?action='+bac+'&guild_creator_id='+gcid+'&guild_created_at='+gcat+'&slot='+lslot+'&monster_slot='+mslot+'&attack_key='+((x*buts)-(buts-y))+'\')">';
+						//}
+					//}
+
+					//c+='<img class="imgButton" src="./ploader.php_files/'+bimg+'">';
+					//if(bac!==0){	
+						//c+='</a>';
+					//}
+					//d.innerHTML=c;
+					//z.appendChild(d);
+				//}
+			//}
+			//gel('availableAttacks').value = nvals*buts;
+			//gel('scrollRightArrow').setAttribute('style', 'display:none');
+			//gel('scrollLeftArrow').setAttribute('style', 'display:block');
+			//gel('currentOffset').value=(nvals*buts-(buts-1));
+		//}
+
+
+		//if (g.indexOf(mh+'cronus') !== -1 || g.indexOf('top_hydra') !== -1) {
+			//b=gel('monster_attack_section_1');				
+
+			//if(b.children[1].casuser) u=b.children[1].casuser.value;
+
+			//twr=0;
+			//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+				//if(b.children[1].mid !==undefined){
+					//mid=b.children[1].mid.value;
+					//if(b.children[1].tower !==undefined) twr=b.children[1].tower.value;
+				//}
+			//} else {
+				//gcid=b.children[1].guild_creator_id.value;
+				//gcat=b.children[1].guild_created_at.value;
+				//lslot=b.children[1].slot.value;
+				//mslot=b.children[1].monster_slot.value;
+			//}
+
+			//b=b.parentNode;
+			//if(twr!=0){
+				//x=document.createElement('div');
+				//insertAfter(b.children[0],x);			
+				//b=b.children[1];
+			//}
+			//for(x=1;x<f+1;x++){ remdom('monster_attack_section_'+x);="" }="" for(x="1;x<7;x++){" d="document.createElement('div');" d.setattribute('id',="" 'monster_attack_section_'+(x-1));="" d.setattribute('class',="" 'action');="" if(x<6){="" d.setattribute('style',="" 'padding:="" 19px="" 0pt="" 17px;float:="" left;display:none');="" else="" {="" left;display:block');="" c="<div><img src=&quot;" +ilnk+'button_cost_stamina_'+i[x]+'.gif"="">';
+				//c+='<a onclick="als(glob, \'';
+
+				//if(page!=='guildv2_battle_monster'&&page!=='battle_expansion_monster'){
+					//if(mid!==''){c+='festival_';}
+					//c+='battle_monster.php?action=attackDragonSpecific&casuser='+u+'&mpool=3&attack_key='+x;
+					//if(mid!==''){c+='&mid='+mid+'&tower='+twr;}
+				//} else {
+					//c+='battle_expansion_monster.php?action=attackDragonSpecific&guild_creator_id='+gcid+'&guild_created_at='+gcat+'&slot='+lslot+'&monster_slot='+mslot+'&attack_key='+x;
+				//}
+				//c+='\')"><img class="imgButton" src="./ploader.php_files/'+ilnk+'button_nm_p_power_attack.gif"></a>';
+				//d.innerHTML=c;
+				//b.appendChild(d);
+			//}
+			//gel('availableAttacks').value = 5;
+			//gel('scrollRightArrow').setAttribute('style', 'display:none');
+			//gel('scrollLeftArrow').setAttribute('style', 'display:block');
+			//gel('currentOffset').value=5;
+		//}
+	//}
+	//if (g.indexOf('seamonster_title') !== -1 || g.indexOf('top_seamonster') !== -1|| g.indexOf(mh+'ancientserpent') !== -1|| g.indexOf(mh+'emeraldserpent') !== -1|| g.indexOf(mh+'amyserpent') !== -1){
+
+		//if(gel('monsterTicker')==null) return;
+		//a=gel('monsterTicker').parentNode.parentNode;
+		//if(a.children[1].id=='monsterTicker'){
+			//a.removeChild(a.children[1]);
+			//a.removeChild(a.children[1]);
+		//}
+		//a=gelc('positive',1);
+		//if(g.indexOf('VICTORY!<') !==-1) return;
+		//if(a.nodeName==='SPAN'){a=gelc('positive',2);}
+		//b=a.parentNode;
+		//if(b.innerHTML.indexOf('reward_button')!==-1){return;}
+		//b.removeChild(b.children[1]);
+		//u=b.children[2].children[0].children[0].casuser.value;
+			//if(b.children[2].children[0].children[0].mid !==undefined){
+				//mid=b.children[2].children[0].children[0].mid.value;
+				//if(b.children[2].children[0].children[0].tower !==undefined) twr=b.children[2].children[0].children[0].tower.value;
+			//}
+		//bqh=b.children[2].children[0].children[0].bqh.value;
+		//b.children[2].removeChild(b.children[2].children[0]);
+		//b.children[2].removeChild(b.children[2].children[0]);
+		//for(x=3;x>0;x--){
+			//d = document.createElement('div');
+			//c='<a onclick="als(glob, \'';
+			//if(mid!==''){c+='festival_';}
+			//c+='battle_monster.php?action=attackDragon'+i[x];
+			//c+='&casuser='+u+'&mpool=2';
+			//if(mid!==''){c+='&mid='+mid+'&tower='+twr;}
+			//c+='\')"><img class="imgButton" src="./ploader.php_files/'+ilnk+'serpent_'+i[x]+'stam_attack.gif"></a>';
+			//d.innerHTML=c.replace('serpent_5stam_attack','seamonster_power');
+			//b.children[2].insertBefore(d,b.children[2].children[0]);
+		//}
+	//}
+
+	//if(g.indexOf(mh+'frostdrag') !== -1 || g.indexOf('top_dragon') !== -1 || g.indexOf(mh+'emeralddrag') !== -1 || g.indexOf(mh+'golddrag') !== -1|| g.indexOf(mh+'ancientreddrag') !== -1){
+		//if(g.indexOf('>VICTORY!<') !==-1) return;
+		//a=gelc('positive',1);
+		//if(a.nodeName==='SPAN'){a=gelc('positive',2);}
+		//b=a.parentNode;
+		//if(b.innerHTML.indexOf('reward_button')!==-1){return;}
+		//while(b.children[1].id.indexOf('monsterTicker')!=-1){
+			//b.removeChild(b.children[1]);
+		//}
+		//b.removeChild(b.children[1]);
+		//u=b.children[2].children[0].children[0].casuser.value;
+			//if(b.children[2].children[0].children[0].mid !==undefined){
+				//mid=b.children[2].children[0].children[0].mid.value;
+				//if(b.children[2].children[0].children[0].tower !==undefined) twr=b.children[2].children[0].children[0].tower.value;
+			//}
+		//bqh=b.children[2].children[0].children[0].bqh.value;
+		//b.children[2].removeChild(b.children[2].children[0]);
+		//b.children[2].removeChild(b.children[2].children[0]);
+		//for(x=3;x>0;x--){
+			//d = document.createElement('div');
+			//c='<a onclick="als(glob, \'';
+			//if(mid!==''){c+='festival_';}
+			//c+='battle_monster.php?action=attackDragon';
+			//if(x===2){c+='5';}
+			//if(x===3){c+='10';}
+			//c+='&casuser='+u+'&mpool=2';
+			//if(mid!==''){c+='&mid='+mid+'&tower='+twr;}
+			//c+='\')"><img class="imgButton" src="./ploader.php_files/'+ilnk;if(x===1){c+='seamonster_attack.jpg';}if(x===2){c+='seamonster_power.gif';}if(x===3){c+='serpent_10stam_attack.gif'"></a>';
+			//d.innerHTML=c;
+			//b.children[2].insertBefore(d,b.children[2].children[0]);
+		//}
+	//}
+//}
+
+}
 tools.Monster.monsterBars = function() {
 	var _monstername = null, _ret = [];
 	// add percentage to top bars
