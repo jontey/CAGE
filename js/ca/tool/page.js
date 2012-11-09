@@ -11,8 +11,8 @@ tools.Page.init = function() {
 	// some utilites
 	addFunction(function() {
 		noSrc = function(_t) {
-			var _re = new RegExp('src=', 'gi');
-			_t = _t.replace(_re, 'nosrc=');
+			var _re = new RegExp('src="', 'gi');
+			_t = _t.replace(_re, 'nosrc="');
 			return _t;
 		};
 		noNoSrc = function(_jqo) {
@@ -334,4 +334,3 @@ tools.Page.ajaxFormSend = function() {
 			}
 		});
 	};
-};

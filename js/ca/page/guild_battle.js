@@ -3,10 +3,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 
-	// add link to profile pics
-	$('#enemy_guild_member_list *[uid]').each(function() {
-		$(this).wrap('<a uid="' + $(this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
-	});
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
@@ -53,18 +49,66 @@ tools.Page.pages['guild_battle.php'] = function() {
 	var _storedClass = item.get('cagePageGuildBattleClass', 'All');
 	var _storedActivity = item.get('cagePageGuildBattleActivity', 'All');
 	var _storedStatus = item.get('cagePageGuildBattleStatus', 'All');
+	var _storedPoints = item.get('cagePageGuildBattlePoints', 'All');
 
 	// gate filter
 	function filterGate() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
 		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _points = $('#cageGatePointsFilter').val();
 		var _count = 0;
+		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
+		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
+			// add link to profile pics
+			$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
+
 			var _text = $(_e).text();
 			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
-				$(_e).show();
-				_count += 1;
+				if (_points !== 'All') {
+					if (_text.match(/Level: \d+/)) {
+						var targetLevelText = _text.match(/Level: \d+/);
+						var targetLevelString = targetLevelText[0].match(/\d+/);
+						var targetLevel = Number(targetLevelString[0]);
+						switch (_points) {
+							case '240':
+								if (targetLevel > myLevel * 1.2) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '200':
+								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '160':
+								if (targetLevel <= myLevel * 0.8) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							default:
+								$(_e).show();
+								_count += 1;
+							}
+					} else {
+						console.log('Error in points filter!');
+						$(_e).show();
+						_count += 1;
+					}
+				} else {
+					$(_e).show();
+					_count += 1;
+				}
 			} else {
 				$(_e).hide();
 			}
@@ -94,6 +138,11 @@ tools.Page.pages['guild_battle.php'] = function() {
 		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
+	}, filterPoints = {
+		'All' : 'All',
+		'240' : '240',
+		'200' : '200',
+		'160' : '160'
 	};
 	// Class filter
 	$('body > ul.ui-selectmenu-menu').remove();
@@ -114,6 +163,8 @@ tools.Page.pages['guild_battle.php'] = function() {
 		item.set('cagePageGuildBattleActivity', _storedActivity);
 		_storedStatus = 'All';
 		item.set('cagePageGuildBattleStatus', _storedStatus);
+		_storedPoints = 'All';
+		item.set('cagePageGuildBattlePoints', _storedPoints);
 		filterGate();
 	}));
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter" class="cagegatefiltertitle">');
@@ -122,7 +173,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedClass == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedClass = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleClass', _storedClass);
 		filterGate();
@@ -134,7 +184,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedActivity == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedActivity = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleActivity', _storedActivity);
 		filterGate();
@@ -146,17 +195,43 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedStatus == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedStatus = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleStatus', _storedStatus);
 		filterGate();
 	});
-	filterGate();
 	$('#cageGateStatusFilter, #cageGateClassFilter, #cageGateActivityFilter').css({
 		'float' : 'left',
 		'color' : '#fff',
 		'height' : 25,
 		'border' : '1 solid #444444',
-		'backgroundColor' : '#222'
+		'backgroundColor' : '#222',
+		'position' : 'relative',
+		'left' : 9,
+		'top' : 3
 	});
+	// Battle activity points filter
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
+	_sel = $('#cageGatePointsFilter');
+	$.each(filterPoints, function(_i, _e) {
+		_sel.append('<option value="' + _e + '" ' + (_storedPoints == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
+	});
+	_sel.change(function() {
+		_storedPoints = $(this).find("option:selected").text();
+		item.set('cagePageGuildBattlePoints', _storedPoints);
+		filterGate();
+	});
+
+	$('#cageGatePointsFilter, #cageGateStatusFilter, #cageGateClassFilter, #cageGateActivityFilter').css({
+		'float' : 'left',
+		'color' : '#fff',
+		'height' : 25,
+		'border' : '1 solid #444444',
+		'backgroundColor' : '#222',
+		'position' : 'relative',
+		'left' : 9,
+		'top' : 3
+	});
+	window.setTimeout(function() {
+		filterGate();
+	}, 10);
 };
